@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+*.local
+public/data/infra-plan-*.json

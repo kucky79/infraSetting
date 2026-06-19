@@ -1,0 +1,1037 @@
+{
+  "source": "서버자원_팀별분류.xlsx",
+  "version": "1.0",
+  "count": 55,
+  "servers": [
+    {
+      "id": "server-POS-web01",
+      "no": 1,
+      "serverName": "POS-web01",
+      "systemName": "POS",
+      "role": "WAS",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "192.168.0.90",
+        "125.6.36.162",
+        "172.16.0.69"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-POS-web02",
+      "no": 2,
+      "serverName": "POS-web02",
+      "systemName": "POS",
+      "role": "WAS",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "192.168.0.56",
+        "172.16.0.27"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-POS-web03",
+      "no": 3,
+      "serverName": "POS-web03",
+      "systemName": "POS",
+      "role": "Deploy",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "192.168.0.37",
+        "172.16.0.38"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-POS-db01",
+      "no": 4,
+      "serverName": "POS-db01",
+      "systemName": "POS",
+      "role": "DB",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "172.16.0.13",
+        "172.16.1.81",
+        "172.16.2.32"
+      ],
+      "spec": "r2.c8m32 (8vCPU, 32GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-POS-db02",
+      "no": 5,
+      "serverName": "POS-db02",
+      "systemName": "POS",
+      "role": "DB",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "172.16.0.23",
+        "172.16.1.18",
+        "172.16.2.96"
+      ],
+      "spec": "r2.c8m32 (8vCPU, 32GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-SOFTSTONE-crmwas01",
+      "no": 6,
+      "serverName": "SOFTSTONE-crmwas01",
+      "systemName": "CRM",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.43"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-SOFTSTONE-crmweb01",
+      "no": 7,
+      "serverName": "SOFTSTONE-crmweb01",
+      "systemName": "CRM",
+      "role": "WEB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.71",
+        "133.186.135.137"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-crmtestwas",
+      "no": 8,
+      "serverName": "crmtestwas",
+      "systemName": "CRM",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.2.44"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "삭제예정",
+      "deletePlanned": true,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-crmwebtest",
+      "no": 9,
+      "serverName": "crmwebtest",
+      "systemName": "CRM",
+      "role": "WEB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.54"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "삭제예정",
+      "deletePlanned": true,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-SOFTSTONE-CRMWAS-TEST",
+      "no": 10,
+      "serverName": "SOFTSTONE-CRMWAS-TEST",
+      "systemName": "CRM",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.11"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "삭제예정",
+      "deletePlanned": true,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-SOFTSTONE-CRMWEB-TEST",
+      "no": 11,
+      "serverName": "SOFTSTONE-CRMWEB-TEST",
+      "systemName": "CRM",
+      "role": "WEB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.16",
+        "133.186.153.254"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "삭제예정",
+      "deletePlanned": true,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-SOFTSTONE-hrmwas01",
+      "no": 12,
+      "serverName": "SOFTSTONE-hrmwas01",
+      "systemName": "HRM",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.68"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-SOFTSTONE-hrmweb01",
+      "no": 13,
+      "serverName": "SOFTSTONE-hrmweb01",
+      "systemName": "HRM",
+      "role": "WEB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.73",
+        "133.186.132.136"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-SOFTSTONE-hrmdb01",
+      "no": 14,
+      "serverName": "SOFTSTONE-hrmdb01",
+      "systemName": "HRM",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.106"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-JUNO-HOME01",
+      "no": 15,
+      "serverName": "JUNO-HOME01",
+      "systemName": "JUNO",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.27",
+        "125.6.36.251"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "삭제예정",
+      "deletePlanned": true,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-JUNO-HOMEWEB01",
+      "no": 16,
+      "serverName": "JUNO-HOMEWEB01",
+      "systemName": "JUNO",
+      "role": "WEB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.53",
+        "125.6.37.128"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-JUNO-HOMEDB01",
+      "no": 17,
+      "serverName": "JUNO-HOMEDB01",
+      "systemName": "JUNO",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.40"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-JUNO-CUSTWAS01",
+      "no": 18,
+      "serverName": "JUNO-CUSTWAS01",
+      "systemName": "JUNO",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.49",
+        "180.210.83.138"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-JUNO-CUSTDB01",
+      "no": 19,
+      "serverName": "JUNO-CUSTDB01",
+      "systemName": "JUNO",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.54"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-JUNO-APPWAS01",
+      "no": 20,
+      "serverName": "JUNO-APPWAS01",
+      "systemName": "JUNO / CONSUMER",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.17",
+        "133.186.212.32"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-JUNO-APPDB01",
+      "no": 21,
+      "serverName": "JUNO-APPDB01",
+      "systemName": "JUNO",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.76"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-APP",
+      "no": 22,
+      "serverName": "APP",
+      "systemName": "APP",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.32"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-APP-DB01",
+      "no": 23,
+      "serverName": "APP-DB01",
+      "systemName": "APP",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.96"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-BRD",
+      "no": 24,
+      "serverName": "BRD",
+      "systemName": "BRD",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.69",
+        "133.186.250.182"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-BRD-DB01",
+      "no": 25,
+      "serverName": "BRD-DB01",
+      "systemName": "BRD",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.102"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-BAT-db01",
+      "no": 26,
+      "serverName": "BAT-db01",
+      "systemName": "BAT",
+      "role": "DB",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "172.16.0.45",
+        "133.186.146.189",
+        "192.168.0.114"
+      ],
+      "spec": "r2.c4m16 (4vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-REPORT",
+      "no": 27,
+      "serverName": "REPORT",
+      "systemName": "REPORT",
+      "role": "OZ_Report",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.113"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-bat-web01",
+      "no": 28,
+      "serverName": "bat-web01",
+      "systemName": "BAT",
+      "role": "Scheduler",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.81",
+        "133.186.223.171"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-SOFTSTONE-batwas01",
+      "no": 29,
+      "serverName": "SOFTSTONE-batwas01",
+      "systemName": "BAT",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.7",
+        "172.16.0.87"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-KAFKA",
+      "no": 30,
+      "serverName": "KAFKA",
+      "systemName": "INFRA",
+      "role": "Broker",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.8",
+        "180.210.81.91"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-API",
+      "no": 31,
+      "serverName": "API",
+      "systemName": "INFRA",
+      "role": "Consumer",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.62",
+        "180.210.81.38"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-jenkins2",
+      "no": 32,
+      "serverName": "jenkins2",
+      "systemName": "INFRA",
+      "role": "CI/CD+Vault",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.25",
+        "133.186.213.186"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-UMS-DB01",
+      "no": 33,
+      "serverName": "UMS-DB01",
+      "systemName": "UMS",
+      "role": "DB",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "172.16.0.20"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-UMS-KAFKA-DMZ",
+      "no": 34,
+      "serverName": "UMS-KAFKA-DMZ",
+      "systemName": "UMS",
+      "role": "Broker(DMZ)",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "192.168.0.86",
+        "133.186.135.213"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-UMS-SERVER01",
+      "no": 35,
+      "serverName": "UMS-SERVER01",
+      "systemName": "UMS",
+      "role": "Server",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "172.16.0.131"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "개발팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-DW-ETL01",
+      "no": 36,
+      "serverName": "DW-ETL01",
+      "systemName": "DW",
+      "role": "ETL",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "192.168.0.36",
+        "133.186.151.38",
+        "172.16.0.56"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-DW-DB01",
+      "no": 37,
+      "serverName": "DW-DB01",
+      "systemName": "DW",
+      "role": "DB",
+      "os": "Windows 2019 STD",
+      "ips": [
+        "172.16.0.111"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-ETL-web01",
+      "no": 38,
+      "serverName": "ETL-web01",
+      "systemName": "ETL",
+      "role": "WEB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.57",
+        "180.210.81.94"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-ETL-db01",
+      "no": 39,
+      "serverName": "ETL-db01",
+      "systemName": "ETL",
+      "role": "DB",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "172.16.0.32"
+      ],
+      "spec": "m2.c2m4 (2vCPU, 4GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-BAT-ETL01",
+      "no": 40,
+      "serverName": "BAT-ETL01",
+      "systemName": "BAT-ETL",
+      "role": "ETL",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "172.16.0.65"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-BAT-ETL02",
+      "no": 41,
+      "serverName": "BAT-ETL02",
+      "systemName": "BAT-ETL",
+      "role": "ETL",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "172.16.0.119"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-JUNO-REPORT",
+      "no": 42,
+      "serverName": "JUNO-REPORT",
+      "systemName": "JUNO",
+      "role": "Report",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "192.168.0.121",
+        "133.186.250.100",
+        "172.16.0.29"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-DW-META01",
+      "no": 43,
+      "serverName": "DW-META01",
+      "systemName": "DW",
+      "role": "Meta",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "192.168.0.138",
+        "172.16.0.100"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-DW-WORK01",
+      "no": 44,
+      "serverName": "DW-WORK01",
+      "systemName": "DW",
+      "role": "Work",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "192.168.0.30",
+        "172.16.0.30"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-DW-MQ01",
+      "no": 45,
+      "serverName": "DW-MQ01",
+      "systemName": "DW",
+      "role": "MQ",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "192.168.0.14",
+        "133.186.146.238",
+        "172.16.0.72"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-BAT-WORK01",
+      "no": 46,
+      "serverName": "BAT-WORK01",
+      "systemName": "BAT",
+      "role": "Work",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "172.16.0.17"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-BAT-WORK02",
+      "no": 47,
+      "serverName": "BAT-WORK02",
+      "systemName": "BAT",
+      "role": "Work",
+      "os": "Ubuntu Server 24.04 LTS",
+      "ips": [
+        "172.16.0.124"
+      ],
+      "spec": "m2.c8m16 (8vCPU, 16GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "데이터팀",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-OPDG",
+      "no": 48,
+      "serverName": "OPDG",
+      "systemName": "OPDG",
+      "role": "Gateway",
+      "os": "Windows 2022 STD",
+      "ips": [
+        "172.16.0.90"
+      ],
+      "spec": "r2.c8m32 (8vCPU, 32GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "private",
+      "hasPublicIp": false
+    },
+    {
+      "id": "server-softstone-hiware",
+      "no": 49,
+      "serverName": "softstone-hiware",
+      "systemName": "HIWARE",
+      "role": "연계솔루션",
+      "os": "CentOS 7.9",
+      "ips": [
+        "192.168.0.106",
+        "133.186.153.167"
+      ],
+      "spec": "r2.c4m16 (4vCPU, 16GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-softstone-cms",
+      "no": 50,
+      "serverName": "softstone-cms",
+      "systemName": "CMS",
+      "role": "CMS",
+      "os": "CentOS 7.8",
+      "ips": [
+        "192.168.0.94",
+        "133.186.228.87"
+      ],
+      "spec": "t2.c1m1 (1vCPU, 1GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-softstone-waf01",
+      "no": 51,
+      "serverName": "softstone-waf01",
+      "systemName": "WAF",
+      "role": "보안",
+      "os": "PLOS WAF 2.0.60.0.14",
+      "ips": [
+        "192.168.0.113",
+        "133.186.220.126"
+      ],
+      "spec": "r2.c2m8 (2vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-softstone-waf02",
+      "no": 52,
+      "serverName": "softstone-waf02",
+      "systemName": "WAF",
+      "role": "보안",
+      "os": "PLOS WAF 2.0.60.0.14",
+      "ips": [
+        "192.168.0.28",
+        "133.186.213.125"
+      ],
+      "spec": "r2.c2m8 (2vCPU, 8GB)",
+      "availabilityZone": "kr-pub-b",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-SOFTSTONE-Petra",
+      "no": 53,
+      "serverName": "SOFTSTONE-Petra",
+      "systemName": "Petra",
+      "role": "모니터링",
+      "os": "CentOS 7.8",
+      "ips": [
+        "192.168.0.20",
+        "125.6.38.229"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-SOFTSTONE-Acronis",
+      "no": 54,
+      "serverName": "SOFTSTONE-Acronis",
+      "systemName": "Acronis",
+      "role": "백업",
+      "os": "CentOS 7.8",
+      "ips": [
+        "192.168.0.102",
+        "133.186.209.41"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    },
+    {
+      "id": "server-MOTR",
+      "no": 55,
+      "serverName": "MOTR",
+      "systemName": "MOTR",
+      "role": "WAS",
+      "os": "Ubuntu Server 20.04 LTS",
+      "ips": [
+        "192.168.0.11",
+        "133.186.144.21"
+      ],
+      "spec": "m2.c4m8 (4vCPU, 8GB)",
+      "availabilityZone": "kr-pub-a",
+      "team": "공통자원",
+      "note": "",
+      "deletePlanned": false,
+      "networkZone": "dmz",
+      "hasPublicIp": true
+    }
+  ]
+}
