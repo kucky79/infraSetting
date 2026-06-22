@@ -43,6 +43,7 @@ export type InfraNodeData = {
   servers?: ServerInventoryItem[];
   logicalSubtitle?: string;
   subtitle?: string;
+  spec?: string;
   zoneId?: string;
   risk?: "normal" | "warning" | "danger";
 };

@@ -11,7 +11,7 @@ type NodeEditDialogProps = {
   onClose: () => void;
   onSave: (
     nodeId: string,
-    updates: Pick<InfraNodeData, "label" | "kind" | "logicalSubtitle" | "subtitle">,
+    updates: Pick<InfraNodeData, "label" | "kind" | "logicalSubtitle" | "subtitle" | "spec">,
   ) => void;
 };
 
@@ -70,12 +70,14 @@ export function NodeEditDialog({ node, onClose, onSave }: NodeEditDialogProps) {
   const [label, setLabel] = useState("");
   const [kind, setKind] = useState<EditableNodeKind>("service");
   const [subtitle, setSubtitle] = useState("");
+  const [spec, setSpec] = useState("");
 
   useEffect(() => {
     if (!node) return;
     setLabel(node.data.label);
     setKind(getEditableKind(node.data.kind));
     setSubtitle(node.data.logicalSubtitle ?? node.data.subtitle ?? "");
+    setSpec(node.data.spec ?? "");
   }, [node]);
 
   useEffect(() => {
@@ -98,12 +100,14 @@ export function NodeEditDialog({ node, onClose, onSave }: NodeEditDialogProps) {
     event.preventDefault();
     const nextLabel = label.trim();
     const nextSubtitle = subtitle.trim() || defaultSubtitleByKind[kind];
+    const nextSpec = spec.trim();
     if (!nextLabel) return;
     onSave(node.id, {
       label: nextLabel,
       kind,
       logicalSubtitle: nextSubtitle,
       subtitle: nextSubtitle,
+      spec: nextSpec || undefined,
     });
     onClose();
   };
@@ -138,6 +142,14 @@ export function NodeEditDialog({ node, onClose, onSave }: NodeEditDialogProps) {
           <label className="fieldLabel">
             <span>설명</span>
             <input value={subtitle} onChange={(event) => setSubtitle(event.target.value)} />
+          </label>
+          <label className="fieldLabel wideField">
+            <span>스펙</span>
+            <input
+              placeholder="예: 4vC/8MEM, M/S HA 구성, ETL 전용"
+              value={spec}
+              onChange={(event) => setSpec(event.target.value)}
+            />
           </label>
         </div>
 

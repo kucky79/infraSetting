@@ -58,6 +58,7 @@ export const InfraNode = memo(({ data, selected }: NodeProps<InfraNodeData>) => 
       <div className="nodeText">
         <strong>{data.label}</strong>
         {logicalSubtitle ? <span>{logicalSubtitle}</span> : null}
+        {data.spec ? <span className="nodeSpec">{data.spec}</span> : null}
         {servers.length > 0 ? (
           <div className="nodeServerList">
             {visibleServers.map((server) => (

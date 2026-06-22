@@ -699,6 +699,11 @@ button {
   font-size: 11px;
 }
 
+.nodeText .nodeSpec {
+  color: #2f3c4c;
+  font-weight: 700;
+}
+
 .nodeServerList {
   display: flex;
   flex-wrap: wrap;
@@ -956,6 +961,10 @@ button {
 .fieldLabel {
   display: grid;
   gap: 6px;
+}
+
+.wideField {
+  grid-column: 1 / -1;
 }
 
 .fieldLabel span {

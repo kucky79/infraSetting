@@ -21,7 +21,9 @@ const getNodeWidth = (node: Node<InfraNodeData>) => {
 
 const getNodeHeight = (node: Node<InfraNodeData>) => {
   const height = Number((node.style as { height?: number } | undefined)?.height);
-  return Number.isFinite(height) && height > 0 ? height : node.type === "zoneNode" ? ZONE_HEIGHT : NODE_HEIGHT;
+  if (Number.isFinite(height) && height > 0) return height;
+  if (node.type === "zoneNode") return ZONE_HEIGHT;
+  return node.data.spec ? NODE_HEIGHT + 14 : NODE_HEIGHT;
 };
 
 const getBounds = (nodes: Node<InfraNodeData>[]): Bounds => {
@@ -54,6 +56,11 @@ const escapeMermaid = (value: unknown) =>
 
 const mermaidId = (id: string) => id.replace(/[^a-zA-Z0-9_]/g, "_");
 
+const nodeLabelLines = (node: Node<InfraNodeData>) => {
+  const subtitle = node.data.logicalSubtitle ?? node.data.subtitle;
+  return [node.data.label, subtitle, node.data.spec].filter(Boolean);
+};
+
 export const exportDiagramMermaid = (nodes: Node<InfraNodeData>[], edges: Edge[]) => {
   const zones = nodes.filter((node) => node.type === "zoneNode");
   const graphNodes = nodes.filter((node) => node.type !== "zoneNode");
@@ -67,8 +74,7 @@ export const exportDiagramMermaid = (nodes: Node<InfraNodeData>[], edges: Edge[]
       .filter((node) => node.data.zoneId === zone.id)
       .forEach((node) => {
         written.add(node.id);
-        const subtitle = node.data.logicalSubtitle ?? node.data.subtitle;
-        const label = subtitle ? `${node.data.label}<br/>${subtitle}` : node.data.label;
+        const label = nodeLabelLines(node).join("<br/>");
         lines.push(`    ${mermaidId(node.id)}["${escapeMermaid(label)}"]`);
       });
     lines.push("  end");
@@ -77,8 +83,7 @@ export const exportDiagramMermaid = (nodes: Node<InfraNodeData>[], edges: Edge[]
   graphNodes
     .filter((node) => !written.has(node.id) || !zoneById.has(node.data.zoneId ?? ""))
     .forEach((node) => {
-      const subtitle = node.data.logicalSubtitle ?? node.data.subtitle;
-      const label = subtitle ? `${node.data.label}<br/>${subtitle}` : node.data.label;
+      const label = nodeLabelLines(node).join("<br/>");
       lines.push(`  ${mermaidId(node.id)}["${escapeMermaid(label)}"]`);
     });
 
@@ -228,6 +233,11 @@ const createDiagramCanvas = (nodes: Node<InfraNodeData>[], edges: Edge[], scale 
         context.fillStyle = "#617080";
         context.font = "11px Segoe UI, sans-serif";
         drawText(context, subtitle, node.position.x + 52, node.position.y + 42, width - 64, 14);
+      }
+      if (node.data.spec) {
+        context.fillStyle = "#2f3c4c";
+        context.font = "700 10px Segoe UI, sans-serif";
+        drawText(context, node.data.spec, node.position.x + 52, node.position.y + 56, width - 64, 12);
       }
     });
 

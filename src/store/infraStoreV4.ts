@@ -33,7 +33,7 @@ type InfraState = {
   attachServerToNode: (nodeId: string, server: ServerInventoryItem) => void;
   addServiceNode: (label: string, kind: InfraNodeData["kind"]) => void;
   addZone: () => void;
-  updateNode: (nodeId: string, updates: Pick<InfraNodeData, "label" | "kind" | "logicalSubtitle" | "subtitle">) => void;
+  updateNode: (nodeId: string, updates: Pick<InfraNodeData, "label" | "kind" | "logicalSubtitle" | "subtitle" | "spec">) => void;
   alignSelectedNodes: (axis: "left" | "top") => void;
   distributeSelectedNodes: (axis: "horizontal" | "vertical") => void;
   resizeSelectedNodes: (mode: "width" | "height" | "both") => void;
@@ -65,7 +65,7 @@ const getNodeWidth = (node: Node<InfraNodeData>) => {
 
 const getNodeHeight = (node: Node<InfraNodeData>) => {
   const height = Number((node.style as { height?: number } | undefined)?.height);
-  return Number.isFinite(height) && height > 0 ? height : 58;
+  return Number.isFinite(height) && height > 0 ? height : node.data.spec ? 72 : 58;
 };
 
 const getEditableSelectedNodes = (nodes: Node<InfraNodeData>[], selectedNodeIds: string[]) => {
