@@ -1,6 +1,5 @@
 ﻿import { create } from "zustand";
 import {
-  addEdge,
   applyEdgeChanges,
   applyNodeChanges,
   type Connection,
@@ -43,6 +42,7 @@ type InfraState = {
     edgeId: string,
     updates: { label: string; connectionType: string; color: string; animated: boolean },
   ) => void;
+  reconnectEdge: (edgeId: string, connection: Connection) => void;
   removeEdge: (edgeId: string) => void;
   removeSelectedEdges: () => void;
   removeNode: (nodeId: string) => void;
@@ -327,21 +327,28 @@ export const useInfraStore = create<InfraState>((set, get) => ({
       edges: applyEdgeChanges(actionableChanges, get().edges),
     });
   },
-  onConnect: (connection) =>
+  onConnect: (connection) => {
+    const source = connection.source;
+    const target = connection.target;
+    if (!source || !target || source === target) return;
     set({
-      edges: addEdge(
+      edges: [
+        ...get().edges,
         {
-          ...connection,
-          id: `edge-${connection.source}-${connection.target}-${Date.now()}`,
+          source,
+          target,
+          sourceHandle: connection.sourceHandle,
+          targetHandle: connection.targetHandle,
+          id: `edge-${source}-${target}-${Date.now()}`,
           animated: true,
           interactionWidth: 28,
           label: "REST",
           zIndex: 5,
           data: { connectionType: "rest" },
         },
-        get().edges,
-      ),
-    }),
+      ],
+    });
+  },
   addServerNode: (server) => {
     const exists = get().nodes.some((node) =>
       getAssignedServers(node.data).some((assignedServer) => assignedServer.id === server.id),
@@ -668,6 +675,24 @@ export const useInfraStore = create<InfraState>((set, get) => ({
             ...edge.labelStyle,
             fill: updates.color,
           },
+        };
+      }),
+    });
+  },
+  reconnectEdge: (edgeId, connection) => {
+    const source = connection.source;
+    const target = connection.target;
+    if (!source || !target || source === target) return;
+
+    set({
+      edges: get().edges.map((edge) => {
+        if (edge.id !== edgeId) return edge;
+        return {
+          ...edge,
+          source,
+          target,
+          sourceHandle: connection.sourceHandle,
+          targetHandle: connection.targetHandle,
         };
       }),
     });

@@ -1,4 +1,4 @@
-import { Background, Controls, MiniMap } from "reactflow";
+import { Background, ConnectionMode, Controls, MiniMap } from "reactflow";
 import ReactFlow from "reactflow";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Edge, Node, ReactFlowInstance } from "reactflow";
@@ -94,6 +94,45 @@ const getSelectableEdge = (edge: Edge): Edge => ({
   zIndex: edge.zIndex ?? 5,
 });
 
+const getDirectionalHandles = (
+  edge: Edge,
+  nodes: Node<InfraNodeData>[],
+  sizeById: Map<string, { width: number; height: number }>,
+) => {
+  if (edge.sourceHandle && edge.targetHandle) return edge;
+
+  const source = nodes.find((node) => node.id === edge.source);
+  const target = nodes.find((node) => node.id === edge.target);
+  if (!source || !target) return edge;
+
+  const sourceSize = getNodeSize(source, sizeById);
+  const targetSize = getNodeSize(target, sizeById);
+  const sourceCenter = {
+    x: source.position.x + sourceSize.width / 2,
+    y: source.position.y + sourceSize.height / 2,
+  };
+  const targetCenter = {
+    x: target.position.x + targetSize.width / 2,
+    y: target.position.y + targetSize.height / 2,
+  };
+  const dx = targetCenter.x - sourceCenter.x;
+  const dy = targetCenter.y - sourceCenter.y;
+
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    return {
+      ...edge,
+      sourceHandle: edge.sourceHandle ?? (dx >= 0 ? "out-right" : "out-left"),
+      targetHandle: edge.targetHandle ?? (dx >= 0 ? "out-left" : "out-right"),
+    };
+  }
+
+  return {
+    ...edge,
+    sourceHandle: edge.sourceHandle ?? (dy >= 0 ? "out-bottom" : "out-top"),
+    targetHandle: edge.targetHandle ?? (dy >= 0 ? "out-top" : "out-bottom"),
+  };
+};
+
 export function InfraCanvas({ fitViewVersion, onNodeContextMenu, onNodeSelect }: InfraCanvasProps) {
   const {
     nodes,
@@ -103,6 +142,7 @@ export function InfraCanvas({ fitViewVersion, onNodeContextMenu, onNodeSelect }:
     onNodesChange,
     onEdgesChange,
     onConnect,
+    reconnectEdge,
     setSelectedZone,
     toggleSelectedNode,
     toggleSelectedZone,
@@ -114,13 +154,13 @@ export function InfraCanvas({ fitViewVersion, onNodeContextMenu, onNodeSelect }:
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
   const selectedEdgeIdRef = useRef<string | null>(null);
-  const renderedEdges = useMemo(
-    () =>
-      edges.map((edge) => ({
-        ...getSelectableEdge(edge),
-      })),
-    [edges],
-  );
+  const renderedEdges = useMemo(() => {
+    const measuredNodes = reactFlow?.getNodes() ?? [];
+    const sizeById = new Map(
+      measuredNodes.map((node) => [node.id, { width: node.width ?? 220, height: node.height ?? 58 }]),
+    );
+    return edges.map((edge) => getSelectableEdge(getDirectionalHandles(edge, nodes, sizeById)));
+  }, [edges, nodes, reactFlow]);
   const renderedNodes = useMemo(
     () => {
       const measuredNodes = reactFlow?.getNodes() ?? [];
@@ -210,6 +250,11 @@ export function InfraCanvas({ fitViewVersion, onNodeContextMenu, onNodeSelect }:
       ?.classList.add("selected");
   };
 
+  const handleReconnectEdge = (oldEdge: Edge, connection: Parameters<typeof reconnectEdge>[1]) => {
+    reconnectEdge(oldEdge.id, connection);
+    selectEdgeElement(oldEdge.id);
+  };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const activeElement = document.activeElement;
@@ -251,6 +296,8 @@ export function InfraCanvas({ fitViewVersion, onNodeContextMenu, onNodeSelect }:
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onReconnect={handleReconnectEdge}
+        onEdgeUpdate={handleReconnectEdge}
         onConnectStart={() => setIsConnecting(true)}
         onConnectEnd={() => setIsConnecting(false)}
         onInit={setReactFlow}
@@ -297,6 +344,11 @@ export function InfraCanvas({ fitViewVersion, onNodeContextMenu, onNodeSelect }:
         }}
         elevateNodesOnSelect={false}
         deleteKeyCode={[]}
+        connectionMode={ConnectionMode.Loose}
+        connectionRadius={42}
+        reconnectRadius={18}
+        edgesUpdatable
+        connectOnClick={false}
         connectionLineStyle={{ stroke: "#2563eb", strokeWidth: 2 }}
         snapToGrid
         snapGrid={[20, 20]}

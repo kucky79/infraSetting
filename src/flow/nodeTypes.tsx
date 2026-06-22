@@ -50,8 +50,8 @@ export const InfraNode = memo(({ data, selected }: NodeProps<InfraNodeData>) => 
       }`}
       data-zone-id={data.zoneId}
     >
-      <Handle className="nodeHandle nodeHandleLeft" type="target" position={Position.Left} />
-      <Handle className="nodeHandle nodeHandleTop" type="target" position={Position.Top} />
+      <Handle className="nodeHandle nodeHandleLeft" id="out-left" type="source" position={Position.Left} />
+      <Handle className="nodeHandle nodeHandleTop" id="out-top" type="source" position={Position.Top} />
       <div className="nodeIcon">
         <Icon size={16} />
       </div>
@@ -71,8 +71,8 @@ export const InfraNode = memo(({ data, selected }: NodeProps<InfraNodeData>) => 
           </div>
         ) : null}
       </div>
-      <Handle className="nodeHandle nodeHandleRight" type="source" position={Position.Right} />
-      <Handle className="nodeHandle nodeHandleBottom" type="source" position={Position.Bottom} />
+      <Handle className="nodeHandle nodeHandleRight" id="out-right" type="source" position={Position.Right} />
+      <Handle className="nodeHandle nodeHandleBottom" id="out-bottom" type="source" position={Position.Bottom} />
     </div>
   );
 });

@@ -20,6 +20,8 @@ export function SelectableSmoothStepEdge({
     targetX,
     targetY,
     targetPosition,
+    borderRadius: 8,
+    offset: 24,
   });
 
   const handleSelect = (event: MouseEvent | PointerEvent) => {

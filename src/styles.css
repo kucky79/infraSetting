@@ -574,32 +574,72 @@ button {
 }
 
 .nodeHandle {
-  background: #ffffff;
-  border: 2px solid #2563eb;
-  height: 11px;
-  opacity: 0.34;
-  transform: scale(0.86);
+  background: transparent;
+  border: 0;
+  height: 28px;
+  opacity: 0;
+  pointer-events: all;
   transition:
     opacity 100ms ease,
     transform 100ms ease,
     box-shadow 100ms ease;
-  width: 11px;
+  width: 28px;
+  z-index: 24;
 }
 
-.nodeHandleLeft {
-  left: -6px;
+.nodeHandle::after {
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgb(15 23 42 / 12%);
+  content: "";
+  display: block;
+  height: 12px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    background 100ms ease,
+    box-shadow 100ms ease,
+    transform 100ms ease;
+  width: 12px;
 }
 
 .nodeHandleRight {
-  right: -6px;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+.nodeHandleLeft {
+  left: 0;
+  transform: translate(0, -50%);
 }
 
 .nodeHandleTop {
-  top: -6px;
+  top: 0;
+  transform: translate(-50%, 0);
 }
 
 .nodeHandleBottom {
-  bottom: -6px;
+  bottom: 0;
+  transform: translate(-50%, 0);
+}
+
+.nodeHandleLeft::after {
+  left: 0;
+}
+
+.nodeHandleRight::after {
+  left: 100%;
+}
+
+.nodeHandleTop::after {
+  top: 0;
+}
+
+.nodeHandleBottom::after {
+  top: 100%;
 }
 
 .react-flow__node-infraNode:hover .nodeHandle,
@@ -610,8 +650,18 @@ button {
 }
 
 .nodeHandle:hover {
-  box-shadow: 0 0 0 6px rgb(37 99 235 / 16%);
-  transform: scale(1.25);
+  cursor: crosshair;
+}
+
+.nodeHandle:hover::after {
+  background: #dbeafe;
+  box-shadow: 0 0 0 8px rgb(37 99 235 / 16%);
+  transform: translate(-50%, -50%) scale(1.18);
+}
+
+.canvasShell.isConnecting .nodeHandle::after {
+  background: #eff6ff;
+  box-shadow: 0 0 0 7px rgb(37 99 235 / 12%);
 }
 
 .canvasShell.isConnecting .infraNode {
@@ -626,6 +676,13 @@ button {
     0 14px 28px rgb(15 23 42 / 18%);
 }
 
+.canvasShell.isConnecting .react-flow__edges,
+.canvasShell.isConnecting .react-flow__edge,
+.canvasShell.isConnecting .customEdgeInteraction,
+.canvasShell.isConnecting .edgeLabelButton {
+  pointer-events: none;
+}
+
 .react-flow__edge-path {
   cursor: pointer;
 }
@@ -633,6 +690,22 @@ button {
 .react-flow__edge-interaction {
   cursor: pointer;
   stroke-width: 28;
+}
+
+.react-flow__edgeupdater {
+  cursor: grab;
+  pointer-events: all;
+  stroke: transparent;
+  stroke-width: 28;
+}
+
+.react-flow__edgeupdater:hover {
+  stroke: rgb(37 99 235 / 22%);
+}
+
+.react-flow__edge.edgeSelectedManaged .react-flow__edgeupdater,
+.react-flow__edge.selected .react-flow__edgeupdater {
+  stroke: rgb(37 99 235 / 18%);
 }
 
 .react-flow__edge:hover .react-flow__edge-path {
